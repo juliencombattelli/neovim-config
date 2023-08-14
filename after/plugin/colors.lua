@@ -48,5 +48,4 @@
 --     }
 -- )
 
--- ApplyColors("github_dark")
--- ApplyColors("catppuccin")
+vim.cmd.colorscheme(jucom.colorscheme)
