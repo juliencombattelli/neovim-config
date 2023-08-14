@@ -48,21 +48,21 @@ return require("packer").startup(
             }
         }
 
-        use("zbirenbaum/copilot.lua")
+        -- use("zbirenbaum/copilot.lua")
 
-        use("theprimeagen/Vim-be-good")
+        -- use("theprimeagen/Vim-be-good")
 
         -- markdown preview in the browser
-        use(
-            {
-                "iamcco/markdown-preview.nvim",
-                run = function()
-                    vim.fn["mkdp#util#install"]()
-                end
-            }
-        )
+        -- use(
+        --     {
+        --         "iamcco/markdown-preview.nvim",
+        --         run = function()
+        --             vim.fn["mkdp#util#install"]()
+        --         end
+        --     }
+        -- )
         -- transparency support in neovim (for adding background image, etc.)
-        use("xiyaowong/transparent.nvim")
+        -- use("xiyaowong/transparent.nvim")
 
         -- Recent project explorer
         use("ahmedkhalf/project.nvim")
@@ -92,11 +92,11 @@ return require("packer").startup(
         use {"RRethy/vim-hexokinase", run = "make hexokinase"}
 
         -- util for closing buffers easily
-        use {"kazhala/close-buffers.nvim"}
+        -- use {"kazhala/close-buffers.nvim"}
 
-        use {"mhartington/formatter.nvim"}
+        -- use {"mhartington/formatter.nvim"}
 
-        use {"mg979/vim-visual-multi", branch = "master"}
+        -- use {"mg979/vim-visual-multi", branch = "master"}
 
         use {"rust-lang/rust.vim", ft = {"rust"}}
 
@@ -106,14 +106,14 @@ return require("packer").startup(
         }
 
         -- Themes
-        use(
-            {
-                "projekt0n/github-nvim-theme",
-                tag = "v0.0.7"
-            }
-        )
+        -- use(
+        --     {
+        --         "projekt0n/github-nvim-theme",
+        --         tag = "v0.0.7"
+        --     }
+        -- )
 
-        use {"catppuccin/nvim", as = "catppuccin"}
+       --  use {"catppuccin/nvim", as = "catppuccin"}
 
         use(
             {
