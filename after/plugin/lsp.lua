@@ -126,7 +126,7 @@ lsp.on_attach(
 )
 
 -- lua ls config
-require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+-- require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
 -- angular ls setup
 require("lspconfig").angularls.setup {
@@ -134,32 +134,32 @@ require("lspconfig").angularls.setup {
 }
 
 -- tailwind css setup
-require("lspconfig").tailwindcss.setup {}
+-- require("lspconfig").tailwindcss.setup {}
 
 -- rust
-require("lspconfig").rust_analyzer.setup {
-    on_attach = lsp.on_attach,
-    capabilities = lsp.capabilities,
-    -- below cmd field necessary when running rust-analyzer via rustup
-    cmd = {
-        "rustup",
-        "run",
-        "stable",
-        "rust-analyzer"
-    },
-    settings = {
-        ["rust-analyzer"] = {
-            cargo = {
-                allFeatures = true
-            },
-            diagnostics = {
-                enable = true,
-                experimental = {
-                    enable = true
-                }
-            }
-        }
-    }
-}
+-- require("lspconfig").rust_analyzer.setup {
+--     on_attach = lsp.on_attach,
+--     capabilities = lsp.capabilities,
+--     -- below cmd field necessary when running rust-analyzer via rustup
+--     cmd = {
+--         "rustup",
+--         "run",
+--         "stable",
+--         "rust-analyzer"
+--     },
+--     settings = {
+--         ["rust-analyzer"] = {
+--             cargo = {
+--                 allFeatures = true
+--             },
+--             diagnostics = {
+--                 enable = true,
+--                 experimental = {
+--                     enable = true
+--                 }
+--             }
+--         }
+--     }
+-- }
 
 lsp.setup()
