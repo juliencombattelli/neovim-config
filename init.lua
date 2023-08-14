@@ -1,1 +1,1 @@
-require("aziznal")
+require("jucom")

@@ -138,5 +138,9 @@ return require("packer").startup(
                 require("which-key").setup {}
             end
         }
+
+        use {"tomasiser/vim-code-dark"}
+
+        use {"Mofiqul/vscode.nvim"}
     end
 )
