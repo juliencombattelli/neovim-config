@@ -1,10 +1,10 @@
 require("lualine").setup(
     {
-        -- options = {
-        --     theme = "catppuccin",
-        --     section_separators = {left = "", right = ""},
-        --     component_separators = {left = "", right = ""}
-        -- },
+        options = {
+            theme = jucom.lualine or "auto",
+            -- section_separators = {left = "", right = ""},
+            -- component_separators = {left = "", right = ""}
+        },
         -- icons_enabled = true,
         -- sections = {
         --     lualine_a = {"mode"},
