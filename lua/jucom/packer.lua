@@ -6,6 +6,8 @@ return require("packer").startup(
         -- Packer can manage itself
         use "wbthomason/packer.nvim"
 
+        use { "goolord/alpha-nvim" }
+
         use {
             "nvim-telescope/telescope.nvim",
             tag = "0.1.1"
