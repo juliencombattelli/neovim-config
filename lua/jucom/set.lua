@@ -55,3 +55,21 @@ vim.opt.signcolumn = "yes"
 
 -- Vertical rulers
 vim.opt.colorcolumn = "80,100,120"
+
+-- Enable system clipboard on WSL
+-- Refer to https://neovim.io/doc/user/provider.html#clipboard-wsl
+-- TODO Add check if running on WSL
+vim.cmd[[
+    let g:clipboard = {
+        \   'name': 'WslClipboard',
+        \   'copy': {
+        \      '+': 'clip.exe',
+        \      '*': 'clip.exe',
+        \    },
+        \   'paste': {
+        \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+        \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+        \   },
+        \   'cache_enabled': 0,
+        \ }
+]]
