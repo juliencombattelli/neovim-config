@@ -45,6 +45,7 @@ vim.opt.listchars:append "space:⋅"
 -- vim.opt.listchars:append "tab:›"
 -- vim.opt.listchars:append "eol:↴"
 vim.opt.listchars:append "nbsp:⣿"
+vim.opt.fillchars:append "vert:▏"
 
 -- Keep 8 lines above and below cursor when scrolling
 vim.opt.scrolloff = 8
