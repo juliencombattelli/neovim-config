@@ -39,7 +39,6 @@ vim.opt.smartcase = true
 vim.opt.termguicolors = true
 
 -- Whitespaces
--- TODO darken whitespaces color
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
 -- vim.opt.listchars:append "tab:›"
