@@ -24,7 +24,7 @@ vim.opt.expandtab = true
 
 -- Undoing
 vim.opt.undofile = true
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir" -- Use standard runtime dir
+vim.opt.undodir = vim.fn.stdpath("state") .. "/undodir"
 
 -- Bracket matching
 vim.opt.showmatch = true
