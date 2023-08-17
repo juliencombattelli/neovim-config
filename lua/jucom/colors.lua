@@ -37,9 +37,9 @@ local foreground_darkest = "#3E3F3E"
 --[[##########################################################################]]
 
 vim.api.nvim_set_hl(0, "NonText", { fg = foreground_darkest })
-vim.api.nvim_set_hl(0, "LineNr", { fg = foreground_linenr, bg = background})
-vim.api.nvim_set_hl(0, "CursorLineNr", { fg = foreground, bg = background})
-vim.api.nvim_set_hl(0, "TabLine", { fg = foreground_darker, bg = background_darker})
+vim.api.nvim_set_hl(0, "LineNr", { fg = foreground_linenr, bg = background })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = foreground, bg = background })
+vim.api.nvim_set_hl(0, "TabLine", { fg = foreground_darker, bg = background_darker })
 vim.api.nvim_set_hl(0, "TabLineFill", { fg = foreground_darkest, bg = background_darker })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = foreground_linenr })
 
