@@ -22,6 +22,9 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 -- vim.opt.smartindent = true
 
+-- Reduce the swap update time (mainly for the gitgutter)
+vim.opt.updatetime = 20
+
 -- Undoing
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("state") .. "/undodir"
