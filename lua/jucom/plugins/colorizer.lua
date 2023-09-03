@@ -25,10 +25,8 @@ opts = {
 }
 
 return {
-  {
-    "NvChad/nvim-colorizer.lua",
-    lazy = true,
-    event = { "BufReadPost", "BufNewFile" },
-    opts = opts,
-  }
+  "NvChad/nvim-colorizer.lua",
+  lazy = true,
+  event = { "BufReadPost", "BufNewFile" },
+  opts = opts,
 }

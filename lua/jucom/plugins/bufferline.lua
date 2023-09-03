@@ -138,20 +138,18 @@ local opts = {
 vim.opt.mousemoveevent = true
 
 return {
-  {
-    "akinsho/bufferline.nvim",
-    lazy = true,
-    event = "VeryLazy",
-    keys = keys,
-    opts = opts,
-    config = function(_, opts)
-      bufferline = require("bufferline")
-      opts.options.style_preset = {
-        bufferline.style_preset.no_italic,
-        bufferline.style_preset.no_bold
-      },
-      bufferline.setup(opts)
-    end,
-    dependencies = "nvim-tree/nvim-web-devicons"
-  }
+  "akinsho/bufferline.nvim",
+  lazy = true,
+  event = "VeryLazy",
+  keys = keys,
+  opts = opts,
+  config = function(_, opts)
+    bufferline = require("bufferline")
+    opts.options.style_preset = {
+      bufferline.style_preset.no_italic,
+      bufferline.style_preset.no_bold
+    },
+    bufferline.setup(opts)
+  end,
+  dependencies = "nvim-tree/nvim-web-devicons"
 }

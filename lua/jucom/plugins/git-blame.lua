@@ -4,9 +4,7 @@ vim.g.gitblame_highlight_group = "NonText"
 vim.g.gitblame_set_extmark_options = { priority = 100 }
 
 return {
-  {
-    "f-person/git-blame.nvim",
-    lazy = true,
-    event = "VeryLazy",
-  }
+  "f-person/git-blame.nvim",
+  lazy = true,
+  event = "VeryLazy",
 }

@@ -1,7 +1,5 @@
 return {
-  {
-    "airblade/vim-gitgutter",
-    lazy = true,
-    event = "VeryLazy",
-  }
+  "airblade/vim-gitgutter",
+  lazy = true,
+  event = "VeryLazy",
 }
