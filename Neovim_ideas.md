@@ -18,7 +18,7 @@ A good config starting point: <https://github.com/aziznal/my-neovim-config/>
 - [x] file status unsaved in buffer line
 - [ ] lsp indexing progress (fidget-vim)
 - [x] color preview (vim-hexokinase)
-- [ ] ident lines
+- [x] ident lines
 - [x] blank chars
 - [ ] Closing a buffer always keep nvimtree open and open other buffer if present
 

@@ -19,7 +19,7 @@ local background_darker = "#181818"
 local foreground = "#CCCCCC"
 local foreground_linenr = "#6E7681"
 local foreground_darker = "#9D9D9D"
-local foreground_darkest = "#3E3F3E"
+local foreground_darkest = "#3E3E3E"
 
 --[[##########################################################################]]
 -- Builtin highlights
@@ -98,3 +98,4 @@ vim.api.nvim_create_autocmd({"ModeChanged", "BufEnter"}, {
     })
   end,
 })
+
