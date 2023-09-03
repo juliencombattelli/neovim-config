@@ -76,3 +76,11 @@ if vim.fn.has("wsl") == "0" then
     \   'cache_enabled': 0,
     \ } ]]
 end
+
+-- Autocommand to switch to relative line number in Visual mode
+-- From https://neovim.io/doc/user/autocmd.html#autocommand
+vim.cmd[[
+  au ModeChanged [vV\x16]*:* let &l:rnu = mode() =~# '^[vV\x16]'
+  au ModeChanged *:[vV\x16]* let &l:rnu = mode() =~# '^[vV\x16]'
+  au WinEnter,WinLeave * let &l:rnu = mode() =~# '^[vV\x16]'
+]]

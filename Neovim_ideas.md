@@ -4,7 +4,7 @@ A good config starting point: <https://github.com/aziznal/my-neovim-config/>
 
 ## Autocommands
 
-- [ ] Switch to relative line numbers on visual mode
+- [x] Switch to relative line numbers on visual mode
       (see ModeChanged at <https://neovim.io/doc/user/autocmd.html#autocommand>)
 
 ## Plugins
