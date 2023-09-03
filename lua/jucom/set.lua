@@ -41,13 +41,15 @@ vim.opt.smartcase = true
 -- Colors
 vim.opt.termguicolors = true
 
--- Whitespaces
+-- Editor whitespaces
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
 -- vim.opt.listchars:append "tab:›"
 -- vim.opt.listchars:append "eol:↴"
 vim.opt.listchars:append "nbsp:⣿"
-vim.opt.fillchars:append "vert:▏"
+
+-- Window whitespaces
+vim.opt.fillchars:append "vert:▏" -- █
 
 -- Keep 8 lines above and below cursor when scrolling
 vim.opt.scrolloff = 8
