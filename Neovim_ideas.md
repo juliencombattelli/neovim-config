@@ -11,7 +11,7 @@ A good config starting point: <https://github.com/aziznal/my-neovim-config/>
 
 - [x] buffer line (bufferline)
 - [x] status line (lualine)
-- [ ] minimap
+- [x] minimap
 - [x] gitgutter
 - [x] git blame
 - [ ] git file status in explorer (no default icon)
