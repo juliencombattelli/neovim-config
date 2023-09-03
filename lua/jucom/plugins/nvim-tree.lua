@@ -33,6 +33,10 @@ local opts = {
   }
 }
 
+local keys = {
+  { "<C-b>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree sidebar" },
+}
+
 -- Open file explorer on Nvim startup
 local function open_nvim_tree(data)
   local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
@@ -53,7 +57,7 @@ end
 return {
   "nvim-tree/nvim-tree.lua",
   lazy = false, -- Must be loaded before "VimEnter" event
-  keys = {},
+  keys = keys,
   opts = opts,
   config = function(_, opts)
     require("nvim-tree").setup(opts)
