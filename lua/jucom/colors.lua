@@ -41,6 +41,13 @@ vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { fg = foreground_linenr, bg = bac
 vim.api.nvim_set_hl(0, "NvimTreeTab", { fg = foreground, bg = background_darker, bold = true })
 vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", { link = "NonText" })
 
+-- vim.api.nvim_set_hl(0, "NvimTreeGitDirty", { link = "GitSignsChange" })
+-- vim.api.nvim_set_hl(0, "NvimTreeGitStaged", { link = "GitSignsStagedChange" })
+-- vim.api.nvim_set_hl(0, "NvimTreeGitMerge", { link = "" })
+-- vim.api.nvim_set_hl(0, "NvimTreeGitRenamed", { link = "GitSignsChange" })
+-- vim.api.nvim_set_hl(0, "NvimTreeGitNew", { link = "GitSignsUntracked" })
+-- vim.api.nvim_set_hl(0, "NvimTreeGitDeleted", { link = "GitSignsDelete" })
+
 --[[##########################################################################]]
 -- mini.map highlights
 --[[##########################################################################]]
