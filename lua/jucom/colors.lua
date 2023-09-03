@@ -39,6 +39,7 @@ vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = foreground_linenr })
 vim.api.nvim_set_hl(0, "NvimTreeNormal", { fg = foreground, bg = background_darker })
 vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { fg = foreground_linenr, bg = background_darker })
 vim.api.nvim_set_hl(0, "NvimTreeTab", { fg = foreground, bg = background_darker, bold = true })
+vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", { link = "NonText" })
 
 --[[##########################################################################]]
 -- mini.map highlights

@@ -24,8 +24,29 @@ local opts = {
     dotfiles = false
   },
   renderer = {
+    add_trailing = true,
+    -- highlight_git = true,
     highlight_opened_files = "name",
-    highlight_modified = "name"
+    highlight_modified = "name",
+    indent_markers = {
+      enable = true,
+      icons = {
+        corner = "│",
+        edge = "│",
+        item = "│",
+        bottom = "│",
+        none = " ",
+      },
+    },
+    icons = {
+      git_placement = "signcolumn",
+      glyphs = {
+        folder = {
+          arrow_closed = "",
+          arrow_open = "",
+        },
+      },
+    },
   },
   git = {
     enable = true,
