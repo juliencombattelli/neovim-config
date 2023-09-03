@@ -9,6 +9,8 @@ vim.g.codedark_modern = true
 
 vim.cmd.colorscheme(jucom.colorscheme)
 
+
+
 --[[##########################################################################]]
 -- Colors closer to Dark Modern VSCode theme
 --[[##########################################################################]]
@@ -20,7 +22,6 @@ local foreground = "#CCCCCC"
 local foreground_linenr = "#6E7681"
 local foreground_darker = "#9D9D9D"
 local foreground_darkest = "#3E3F3E"
-
 --[[##########################################################################]]
 -- Builtin highlights
 --[[##########################################################################]]
@@ -32,9 +33,9 @@ vim.api.nvim_set_hl(0, "TabLine", { fg = foreground_darker, bg = background_dark
 vim.api.nvim_set_hl(0, "TabLineFill", { fg = foreground_darkest, bg = background_darker })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = foreground_linenr })
 
---[[##########################################################################]]
--- NvimTree highlights
---[[##########################################################################]]
+--[[##############################################################################]]
+-- NvimTree highlights ####
+--[[##############################################################################]]
 
 vim.api.nvim_set_hl(0, "NvimTreeNormal", { fg = foreground, bg = background_darker })
 vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { fg = foreground_linenr, bg = background_darker })

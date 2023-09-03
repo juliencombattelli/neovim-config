@@ -51,15 +51,13 @@ local function open_nvim_tree(data)
 end
 
 return {
-  {
-    "nvim-tree/nvim-tree.lua",
-    lazy = false, -- Must be loaded before "VimEnter" event
-    keys = {},
-    opts = opts,
-    config = function(_, opts)
-      require("nvim-tree").setup(opts)
-      vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
-    end,
-    dependencies = "nvim-tree/nvim-web-devicons",
-  }
+  "nvim-tree/nvim-tree.lua",
+  lazy = false, -- Must be loaded before "VimEnter" event
+  keys = {},
+  opts = opts,
+  config = function(_, opts)
+    require("nvim-tree").setup(opts)
+    vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+  end,
+  dependencies = "nvim-tree/nvim-web-devicons",
 }

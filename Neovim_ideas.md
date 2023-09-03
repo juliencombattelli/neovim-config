@@ -28,6 +28,7 @@ A good config starting point: <https://github.com/aziznal/my-neovim-config/>
 - [ ] Arrows move through virtual lines (`g<arrow-up>`, `g<arrow-down>`)
 - [ ] Invert arrows used for autocomplete (`<arrow-down>` same as tab)
 - [ ] Ctrl-A select all
+- [ ] Update move keys in colorizer
 
 ## Colorscheme
 
