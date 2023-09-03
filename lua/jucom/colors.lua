@@ -41,6 +41,15 @@ vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { fg = foreground_linenr, bg = bac
 vim.api.nvim_set_hl(0, "NvimTreeTab", { fg = foreground, bg = background_darker, bold = true })
 
 --[[##########################################################################]]
+-- mini.map highlights
+--[[##########################################################################]]
+
+vim.api.nvim_set_hl(0, "MiniMapNormal", { fg = foreground_linenr })
+vim.api.nvim_set_hl(0, "MiniMapSymbolCount", { fg = foreground_linenr })
+vim.api.nvim_set_hl(0, "MiniMapSymbolLine", { fg = foreground_darkest })
+vim.api.nvim_set_hl(0, "MiniMapSymbolView", { fg = foreground_darkest })
+
+--[[##########################################################################]]
 -- Bufferline highlights
 --[[##########################################################################]]
 
@@ -98,4 +107,3 @@ vim.api.nvim_create_autocmd({"ModeChanged", "BufEnter"}, {
     })
   end,
 })
-
