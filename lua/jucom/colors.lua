@@ -49,6 +49,14 @@ vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", { link = "NonText" })
 -- vim.api.nvim_set_hl(0, "NvimTreeGitDeleted", { link = "GitSignsDelete" })
 
 --[[##########################################################################]]
+-- GitSigns highlights
+--[[##########################################################################]]
+
+vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "#009900" }) -- Green from codedark lualine theme "#149054"
+vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#BBBB00" }) -- Yellow from codedark lualine theme "#FFAF00"
+vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = "#FF2222" }) -- Red from codedark lualine theme "#D83D2C"
+
+--[[##########################################################################]]
 -- mini.map highlights
 --[[##########################################################################]]
 
