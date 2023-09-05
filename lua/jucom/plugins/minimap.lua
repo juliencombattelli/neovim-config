@@ -18,6 +18,9 @@ return {
       symbols = {
         encode = minimap.gen_encode_symbols.dot("4x2"),
       },
+      window = {
+        show_integration_count = false,
+      }
     }
     minimap.setup(opts)
     vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_minimap })
