@@ -7,5 +7,8 @@ return {
       theme = jucom.lualine or "auto",
     }
   },
-  dependencies = "vim-gitgutter" -- For the git status highlight groups
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+    "lewis6991/gitsigns.nvim", -- For the git status highlight groups
+  },
 }
