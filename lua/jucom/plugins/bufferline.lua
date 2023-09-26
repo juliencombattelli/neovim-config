@@ -89,6 +89,13 @@ local opts = {
         text_align = "left",
         separator = "▏",
       },
+      {
+        filetype = "DiffviewFiles",
+        text = "Explorer", -- Intentionnally same as NvimTree offset
+        highlight = "NvimTreeTab", -- Intentionnally same as NvimTree offset
+        text_align = "left",
+        separator = "▏",
+      },
     },
 
     color_icons = true, -- whether or not to add the filetype icon highlights

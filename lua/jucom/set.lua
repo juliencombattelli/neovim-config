@@ -52,6 +52,9 @@ vim.opt.listchars:append "nbsp:⣿"
 -- Window whitespaces
 vim.opt.fillchars:append "vert:▏" -- █
 
+-- Diff deleted lines whitespaces
+vim.opt.fillchars:append "diff:╱"
+
 -- Keep 8 lines above and below cursor when scrolling
 vim.opt.scrolloff = 8
 

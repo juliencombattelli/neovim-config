@@ -21,6 +21,25 @@ local foreground_linenr = "#6E7681"
 local foreground_darker = "#9D9D9D"
 local foreground_darkest = "#3E3E3E"
 
+local background_diffadd = "#4C5A2C"
+local background_diffadd_darker = "#383E2A"
+-- VSCode does not use a color for changed lines, but reuse Add and Delete
+-- We are using them for the file statuses in file side panel
+local background_diffchange = "#003951"
+local background_diffchange_darker = "#002230"
+local background_diffdelete = "#701414"
+local background_diffdelete_darker = "#4C1919"
+
+-- Diff colors used by Lualine (not used here for now)
+local foreground_lualine_diffadd = "#149054"
+local foreground_lualine_diffchange = "#FFAF00"
+local foreground_lualine_diffdelete = "#D83D2C"
+
+-- Diff colors used by GitSings
+local foreground_diffadd = "#009900"
+local foreground_diffchange = "#BBBB00"
+local foreground_diffdelete = "#FF2222"
+
 --[[##########################################################################]]
 -- Builtin highlights
 --[[##########################################################################]]
@@ -31,6 +50,7 @@ vim.api.nvim_set_hl(0, "CursorLineNr", { fg = foreground, bg = background })
 vim.api.nvim_set_hl(0, "TabLine", { fg = foreground_darker, bg = background_darker })
 vim.api.nvim_set_hl(0, "TabLineFill", { fg = foreground_darkest, bg = background_darker })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = foreground_linenr })
+vim.api.nvim_set_hl(0, "WinBar", { fg = foreground_linenr })
 
 --[[##########################################################################]]
 -- NvimTree highlights
@@ -52,9 +72,34 @@ vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", { link = "NonText" })
 -- GitSigns highlights
 --[[##########################################################################]]
 
-vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "#009900" }) -- Green from codedark lualine theme "#149054"
-vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#BBBB00" }) -- Yellow from codedark lualine theme "#FFAF00"
-vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = "#FF2222" }) -- Red from codedark lualine theme "#D83D2C"
+vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = foreground_diffadd })
+vim.api.nvim_set_hl(0, "GitSignsChange", { fg = foreground_diffchange })
+vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = foreground_diffdelete })
+
+--[[##########################################################################]]
+-- Diffview highlights
+--[[##########################################################################]]
+
+-- Diffed lines colors in main window
+vim.api.nvim_set_hl(0, "DiffAdd", { bg = background_diffadd_darker })
+vim.api.nvim_set_hl(0, "DiffDelete", { bg = background_diffdelete_darker })
+vim.api.nvim_set_hl(0, "DiffviewDiffAddText", { bg = background_diffadd }) -- Hl defined specifically for diffview.lua view_post_layout hook
+vim.api.nvim_set_hl(0, "DiffviewDiffAddAsDeleteText", { bg = background_diffdelete }) -- Hl defined specifically for diffview.lua view_post_layout hook
+-- Fill chars for non existing lines in main window
+vim.api.nvim_set_hl(0, "DiffviewDiffDeleteDim", { fg = foreground_darkest })
+-- Insertion/Deletion count for each file in file panel
+vim.api.nvim_set_hl(0, "DiffviewFilePanelInsertions", { fg = background_diffadd })
+vim.api.nvim_set_hl(0, "DiffviewFilePanelDeletions", { fg = background_diffdelete })
+-- File status color in file panel
+vim.api.nvim_set_hl(0, "DiffviewStatusAdded", { fg = background_diffadd, bold = true })
+vim.api.nvim_set_hl(0, "DiffviewStatusUntracked", { fg = background_diffadd, bold = true })
+vim.api.nvim_set_hl(0, "DiffviewStatusModified", { fg = background_diffchange, bold = true })
+vim.api.nvim_set_hl(0, "DiffviewStatusRenamed", { fg = background_diffchange, bold = true })
+vim.api.nvim_set_hl(0, "DiffviewStatusDeleted", { fg = background_diffdelete, bold = true })
+vim.api.nvim_set_hl(0, "DiffviewStatusBroken", { fg = background_diffdelete, bold = true })
+vim.api.nvim_set_hl(0, "DiffviewStatusUnknown", { fg = background_diffdelete, bold = true })
+-- Background for side panels
+vim.api.nvim_set_hl(0, "DiffviewNormal", { link = "NvimTreeNormal" })
 
 --[[##########################################################################]]
 -- mini.map highlights
