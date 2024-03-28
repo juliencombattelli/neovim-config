@@ -5,9 +5,9 @@ jucom = {
   lualine = require("jucom.lualine.jucom-codedark"),
 }
 
-require("common.lazy-bootstrap")
-require("lazy").setup("jucom.plugins")
+lazy_bootstrap = require("common.lazy-bootstrap")
+require("lazy").setup("jucom.plugins", lazy_bootstrap.opt)
 
-require("jucom.remap")
-require("jucom.set")
-require("jucom.colors")
+require("common.remap")
+require("common.set")
+require("common.colors")
