@@ -39,6 +39,11 @@ vim.opt.incsearch = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- Mouse
+-- Enable mouse in all modes
+-- Copy/paste to system clipboard will work only when pressing shift to momentarily disable the mouse
+vim.opt.mouse = "a"
+
 -- Colors
 vim.opt.termguicolors = true
 
