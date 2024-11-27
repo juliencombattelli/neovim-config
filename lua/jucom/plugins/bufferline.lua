@@ -146,6 +146,7 @@ vim.opt.mousemoveevent = true
 
 return {
   "akinsho/bufferline.nvim",
+  tag = "v4.6.1",
   lazy = true,
   event = "VeryLazy",
   keys = keys,
