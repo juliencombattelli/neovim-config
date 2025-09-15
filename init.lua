@@ -92,7 +92,10 @@ vim.api.nvim_set_keymap("n", "<C-b>", ":NERDTreeToggle<CR>", { noremap = true })
 require("lazy").setup({
     spec = {
         "VundleVim/Vundle.vim",
-        "itchyny/lightline.vim",
+        {
+            "nvim-lualine/lualine.nvim",
+            dependencies = { "nvim-tree/nvim-web-devicons" },
+        },
         "edkolev/tmuxline.vim",
         "tomasiser/vim-code-dark",
         "scrooloose/nerdtree",
@@ -100,6 +103,8 @@ require("lazy").setup({
         "airblade/vim-gitgutter",
         "rubberduck203/aosp-vim",
     },
+    install = { colorscheme = { "codedark" } },
+    checker = { enabled = true },
 })
 
 -------------------------------------------------------------------------------
@@ -111,22 +116,12 @@ vim.g.indentLine_leadingSpaceEnabled = true
 vim.g.vim_json_syntax_conceal = 0
 
 -------------------------------------------------------------------------------
---- Lightline
+--- Lualine
 -------------------------------------------------------------------------------
 
 vim.opt.laststatus = 2
 vim.opt.showmode = false
-vim.g.lightline = {
-    colorscheme = "codedark",
-    separator = {
-        left = "",
-        right = "",
-    },
-    subseparator = {
-        left = "",
-        right = "",
-    },
-}
+require('lualine').setup()
 
 -------------------------------------------------------------------------------
 --- Color scheme
