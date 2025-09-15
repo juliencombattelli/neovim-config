@@ -1,30 +1,32 @@
-vim.cmd([[
+-------------------------------------------------------------------------------
+--- Bootstrap lazy.nvim
+-------------------------------------------------------------------------------
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle settings
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
-Plugin 'itchyny/lightline.vim'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'tomasiser/vim-code-dark'
-Plugin 'scrooloose/nerdtree'
-"Plugin 'chrisbra/Colorizer'
-Plugin 'Yggdroot/indentLine'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'rubberduck203/aosp-vim'
-
-call vundle#end()
-"filetype plugin indent on
-
-]])
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({
+        "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath
+    })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+            { out, "WarningMsg" },
+            { "\nPress any key to exit..." },
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
+    end
+end
+vim.opt.rtp:prepend(lazypath)
 
 -------------------------------------------------------------------------------
 --- General settings
 -------------------------------------------------------------------------------
+
+-- Leader keys
+vim.g.mapleader = ","
+vim.g.maplocalleader = ";"
 
 vim.opt.number = true
 -- Line wrapping
@@ -82,6 +84,23 @@ vim.api.nvim_set_keymap("i", "<C-a>", "<Esc>ggVG<CR>", { noremap = true })
 
 -- Ctrl+b: open NerdTree
 vim.api.nvim_set_keymap("n", "<C-b>", ":NERDTreeToggle<CR>", { noremap = true })
+
+-------------------------------------------------------------------------------
+--- Setup lazy.nvim
+-------------------------------------------------------------------------------
+
+require("lazy").setup({
+    spec = {
+        "VundleVim/Vundle.vim",
+        "itchyny/lightline.vim",
+        "edkolev/tmuxline.vim",
+        "tomasiser/vim-code-dark",
+        "scrooloose/nerdtree",
+        "Yggdroot/indentLine",
+        "airblade/vim-gitgutter",
+        "rubberduck203/aosp-vim",
+    },
+})
 
 -------------------------------------------------------------------------------
 --- IndentLine
