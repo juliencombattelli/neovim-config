@@ -63,6 +63,7 @@ vim.opt.softtabstop = 4
 vim.opt.list = true
 vim.opt.listchars = {
     tab = "› ",
+    lead = "·",
     trail = "·",
     extends = "»",
     precedes = "«",
@@ -91,12 +92,49 @@ vim.api.nvim_set_keymap("n", "<C-b>", ":NERDTreeToggle<CR>", { noremap = true })
 lazy_specs = {}
 
 -------------------------------------------------------------------------------
---- IndentLine
+--- Telescope
 -------------------------------------------------------------------------------
 
+lazy_specs.telescope = {
+    "nvim-telescope/telescope.nvim",
+    opts = {
+        defaults = {
+            layout_strategy = "vertical",
+        },
+    },
+    dependencies = { "nvim-lua/plenary.nvim" },
+}
+
+-------------------------------------------------------------------------------
+--- IndentLine (obsolete)
+-------------------------------------------------------------------------------
+
+vim.g.indentLine_first_char = "¦"
+vim.g.indentLine_showFirstIndentLevel = true
 vim.g.indentLine_leadingSpaceChar = "·"
 vim.g.indentLine_leadingSpaceEnabled = true
 vim.g.vim_json_syntax_conceal = 0
+
+lazy_specs.identline = {
+    "Yggdroot/indentLine"
+}
+
+-------------------------------------------------------------------------------
+--- indent-blankline
+-------------------------------------------------------------------------------
+
+lazy_specs.indent_blankline = {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {
+        indent = {
+            char = "│", -- one of ¦, ┆, │, ⎸, or ▏
+        },
+        scope = {
+            enabled = false,
+        },
+    },
+}
 
 -------------------------------------------------------------------------------
 --- Lualine
@@ -183,18 +221,15 @@ lazy_specs.lualine = {
 
 require("lazy").setup({
     spec = {
-        "VundleVim/Vundle.vim",
-        lazy_specs.lualine,
-        "edkolev/tmuxline.vim",
         "tomasiser/vim-code-dark",
+        "edkolev/tmuxline.vim",
         "scrooloose/nerdtree",
-        "Yggdroot/indentLine",
-        "airblade/vim-gitgutter",
+        "airblade/vim-gitgutter", -- TODO use gitsigns?
         "rubberduck203/aosp-vim",
+        lazy_specs.telescope,
+        lazy_specs.indent_blankline,
+        lazy_specs.lualine,
     },
-    install = { colorscheme = { "codedark" } },
-    checker = { enabled = true },
-    change_detection = { notify = false },
 })
 
 --#############################################################################
@@ -208,11 +243,52 @@ vim.g.codedark_modern = 1
 -- Activates italicized comments (make sure your terminal supports italics)
 vim.g.codedark_italics = 0
 -- Make the background transparent
-vim.g.codedark_transparent = 1
--- If you have vim-airline, you can also enable the provided theme
-vim.g.airline_theme = "codedark"
+vim.g.codedark_transparent = 0
 -- Might be necessary on some systems
 -- set t_Co=256
 -- set t_ut=
 vim.cmd.colorscheme("codedark")
+
+-------------------------------------------------------------------------------
+-- Colors closer to Dark Modern VSCode theme
+-------------------------------------------------------------------------------
+
+local background = "#1f1f1f"
+local background_darker = "#181818"
+
+local foreground = "#CCCCCC"
+local foreground_linenr = "#6E7681"
+local foreground_darker = "#9D9D9D"
+local foreground_darkest = "#3E3E3E"
+
+local background_diffadd = "#4C5A2C"
+local background_diffadd_darker = "#383E2A"
+-- VSCode does not use a color for changed lines, but reuse Add and Delete
+-- We are using them for the file statuses in file side panel
+local background_diffchange = "#003951"
+local background_diffchange_darker = "#002230"
+local background_diffdelete = "#701414"
+local background_diffdelete_darker = "#4C1919"
+
+-- Diff colors used by Lualine (not used here for now)
+local foreground_lualine_diffadd = "#149054"
+local foreground_lualine_diffchange = "#FFAF00"
+local foreground_lualine_diffdelete = "#D83D2C"
+
+-- Diff colors used by GitSings
+local foreground_diffadd = "#009900"
+local foreground_diffchange = "#BBBB00"
+local foreground_diffdelete = "#FF2222"
+
+-------------------------------------------------------------------------------
+-- Builtin highlights
+-------------------------------------------------------------------------------
+
+vim.api.nvim_set_hl(0, "NonText", { fg = foreground_darkest })
+vim.api.nvim_set_hl(0, "LineNr", { fg = foreground_linenr, bg = background })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = foreground, bg = background })
+vim.api.nvim_set_hl(0, "TabLine", { fg = foreground_darker, bg = background_darker })
+vim.api.nvim_set_hl(0, "TabLineFill", { fg = foreground_darkest, bg = background_darker })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = foreground_linenr })
+vim.api.nvim_set_hl(0, "WinBar", { fg = foreground_linenr })
 
