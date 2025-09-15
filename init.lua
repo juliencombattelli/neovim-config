@@ -221,7 +221,7 @@ lazy_specs.lualine = {
 
 require("lazy").setup({
     spec = {
-        "tomasiser/vim-code-dark",
+        "tomasiser/vim-code-dark", -- TODO use Mofiqul/vscode.nvim and remove all colors customizations
         "edkolev/tmuxline.vim",
         "scrooloose/nerdtree",
         "airblade/vim-gitgutter", -- TODO use gitsigns?
