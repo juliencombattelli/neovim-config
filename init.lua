@@ -243,7 +243,7 @@ vim.g.codedark_modern = 1
 -- Activates italicized comments (make sure your terminal supports italics)
 vim.g.codedark_italics = 0
 -- Make the background transparent
-vim.g.codedark_transparent = 0
+vim.g.codedark_transparent = 1
 -- Might be necessary on some systems
 -- set t_Co=256
 -- set t_ut=
@@ -285,7 +285,11 @@ local foreground_diffdelete = "#FF2222"
 -------------------------------------------------------------------------------
 
 vim.api.nvim_set_hl(0, "NonText", { fg = foreground_darkest })
-vim.api.nvim_set_hl(0, "LineNr", { fg = foreground_linenr, bg = background })
+if vim.g.codedark_transparent == 0 then
+    vim.api.nvim_set_hl(0, "LineNr", { fg = foreground_linenr, bg = background })
+else
+    vim.api.nvim_set_hl(0, "LineNr", { fg = foreground_linenr })
+end
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = foreground, bg = background })
 vim.api.nvim_set_hl(0, "TabLine", { fg = foreground_darker, bg = background_darker })
 vim.api.nvim_set_hl(0, "TabLineFill", { fg = foreground_darkest, bg = background_darker })
