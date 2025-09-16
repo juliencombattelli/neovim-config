@@ -9,5 +9,5 @@
   "telescope.nvim": { "branch": "master", "commit": "b4da76be54691e854d3e0e02c36b0245f945c2c7" },
   "tmuxline.vim": { "branch": "master", "commit": "4119c553923212cc67f4e135e6f946dc3ec0a4d6" },
   "vim-gitgutter": { "branch": "main", "commit": "488c0555e47e2aabe273c635f7dd233e985311a6" },
-  "vscode.nvim": { "branch": "main", "commit": "ddae8c83f88b3047ccee5c541b39762f7aa59ead" }
+  "vscode.nvim": { "branch": "main", "commit": "1c8afcfa8732e675191348640f56efe70b58825d" }
 }
