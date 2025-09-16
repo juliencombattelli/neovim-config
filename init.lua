@@ -143,62 +143,12 @@ lazy_specs.indent_blankline = {
 vim.opt.laststatus = 2
 vim.opt.showmode = false
 
-lualine = {}
-lualine.colors = {
-    black     = "#262626",
-    blue      = "#0078D4",
-    darkgray  = "#303030",
-    gray      = "#3C3C3C",
-    green     = "#149054",
-    inactive  = "#666666",
-    pink      = "#DDB6F2",
-    red       = "#D83D2C",
-    white     = "#D4D4D4",
-    yellow    = "#FFAF00",
-}
-lualine.theme = {
-    command = {
-        a = { fg = lualine.colors.black,    bg = lualine.colors.pink },
-        b = { fg = lualine.colors.pink,     bg = lualine.colors.gray },
-        c = { fg = lualine.colors.white,    bg = lualine.colors.black },
-    },
-    inactive = {
-        a = { fg = lualine.colors.white,    bg = lualine.colors.gray },
-        b = { fg = lualine.colors.inactive, bg = lualine.colors.darkgray },
-        c = { fg = lualine.colors.inactive, bg = lualine.colors.black },
-    },
-    insert = {
-        a = { fg = lualine.colors.white,    bg = lualine.colors.blue },
-        b = { fg = lualine.colors.blue,     bg = lualine.colors.darkgray },
-        c = { fg = lualine.colors.white,    bg = lualine.colors.black },
-    },
-    normal = {
-        a = { fg = lualine.colors.white,    bg = lualine.colors.green },
-        b = { fg = lualine.colors.green,    bg = lualine.colors.darkgray },
-        c = { fg = lualine.colors.white,    bg = lualine.colors.black },
-    },
-    replace = {
-        a = { fg = lualine.colors.white,    bg = lualine.colors.red },
-        b = { fg = lualine.colors.red,      bg = lualine.colors.darkgray },
-        c = { fg = lualine.colors.white,    bg = lualine.colors.black },
-    },
-    terminal = {
-        a = { fg = lualine.colors.white,    bg = lualine.colors.blue },
-        b = { fg = lualine.colors.blue,     bg = lualine.colors.darkgray },
-        c = { fg = lualine.colors.white,    bg = lualine.colors.black },
-    },
-    visual = {
-        a = { fg = lualine.colors.black,    bg = lualine.colors.yellow },
-        b = { fg = lualine.colors.yellow,   bg = lualine.colors.darkgray },
-    },
-}
-
 lazy_specs.lualine = {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
         options = {
-            theme = lualine.theme,
+            theme = "vscode",
         },
     },
 }
@@ -221,7 +171,7 @@ lazy_specs.lualine = {
 
 require("lazy").setup({
     spec = {
-        "tomasiser/vim-code-dark", -- TODO use Mofiqul/vscode.nvim and remove all colors customizations
+        "juliencombattelli/vscode.nvim",
         "edkolev/tmuxline.vim",
         "scrooloose/nerdtree",
         "airblade/vim-gitgutter", -- TODO use gitsigns?
@@ -236,63 +186,17 @@ require("lazy").setup({
 --##### Color scheme
 --#############################################################################
 
--- If you don"t like many colors and prefer the conservative style of the standard Visual Studio
-vim.g.codedark_conservative = 0
--- If you like the new dark modern colors (Needs feedback!)
-vim.g.codedark_modern = 1
--- Activates italicized comments (make sure your terminal supports italics)
-vim.g.codedark_italics = 0
--- Make the background transparent
-vim.g.codedark_transparent = 1
--- Might be necessary on some systems
--- set t_Co=256
--- set t_ut=
-vim.cmd.colorscheme("codedark")
+require("vscode").setup({
+    transparent = true,
+    underline_links = true,
+    group_overrides = {
+        -- Transparent mode overrides the vscBack color used by the groups below
+        ColorColumn = { bg = "#181818" },
+        CursorColumn = { link = "ColorColumn" },
+        CursorLine = { link = "ColorColumn" },
+        EndOfBuffer = { link = "LineNr" },
+    },
+})
 
--------------------------------------------------------------------------------
--- Colors closer to Dark Modern VSCode theme
--------------------------------------------------------------------------------
-
-local background = "#1f1f1f"
-local background_darker = "#181818"
-
-local foreground = "#CCCCCC"
-local foreground_linenr = "#6E7681"
-local foreground_darker = "#9D9D9D"
-local foreground_darkest = "#3E3E3E"
-
-local background_diffadd = "#4C5A2C"
-local background_diffadd_darker = "#383E2A"
--- VSCode does not use a color for changed lines, but reuse Add and Delete
--- We are using them for the file statuses in file side panel
-local background_diffchange = "#003951"
-local background_diffchange_darker = "#002230"
-local background_diffdelete = "#701414"
-local background_diffdelete_darker = "#4C1919"
-
--- Diff colors used by Lualine (not used here for now)
-local foreground_lualine_diffadd = "#149054"
-local foreground_lualine_diffchange = "#FFAF00"
-local foreground_lualine_diffdelete = "#D83D2C"
-
--- Diff colors used by GitSings
-local foreground_diffadd = "#009900"
-local foreground_diffchange = "#BBBB00"
-local foreground_diffdelete = "#FF2222"
-
--------------------------------------------------------------------------------
--- Builtin highlights
--------------------------------------------------------------------------------
-
-vim.api.nvim_set_hl(0, "NonText", { fg = foreground_darkest })
-if vim.g.codedark_transparent == 0 then
-    vim.api.nvim_set_hl(0, "LineNr", { fg = foreground_linenr, bg = background })
-else
-    vim.api.nvim_set_hl(0, "LineNr", { fg = foreground_linenr })
-end
-vim.api.nvim_set_hl(0, "CursorLineNr", { fg = foreground, bg = background })
-vim.api.nvim_set_hl(0, "TabLine", { fg = foreground_darker, bg = background_darker })
-vim.api.nvim_set_hl(0, "TabLineFill", { fg = foreground_darkest, bg = background_darker })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = foreground_linenr })
-vim.api.nvim_set_hl(0, "WinBar", { fg = foreground_linenr })
+vim.cmd.colorscheme("vscode")
 
