@@ -70,6 +70,9 @@ vim.opt.listchars = {
     nbsp = "⣿",
 }
 
+-- Disable concealing for some file types
+vim.g.vim_json_syntax_conceal = 0 -- quote concealing make editing json files inconvenient
+
 -- Scrolling settings
 vim.opt.scrolloff = 8
 vim.opt.mouse = "a"
@@ -83,7 +86,6 @@ vim.api.nvim_set_keymap("i", "<C-a>", "<Esc>ggVG<CR>", { noremap = true })
 
 -- Ctrl+b: open NerdTree
 vim.api.nvim_set_keymap("n", "<C-b>", ":NERDTreeToggle<CR>", { noremap = true })
-
 
 --#############################################################################
 --##### Plugins configuration
@@ -103,20 +105,6 @@ lazy_specs.telescope = {
         },
     },
     dependencies = { "nvim-lua/plenary.nvim" },
-}
-
--------------------------------------------------------------------------------
---- IndentLine (obsolete)
--------------------------------------------------------------------------------
-
-vim.g.indentLine_first_char = "¦"
-vim.g.indentLine_showFirstIndentLevel = true
-vim.g.indentLine_leadingSpaceChar = "·"
-vim.g.indentLine_leadingSpaceEnabled = true
-vim.g.vim_json_syntax_conceal = 0
-
-lazy_specs.identline = {
-    "Yggdroot/indentLine"
 }
 
 -------------------------------------------------------------------------------
@@ -190,7 +178,7 @@ require("vscode").setup({
     transparent = true,
     underline_links = true,
     group_overrides = {
-        -- Transparent mode overrides the vscBack color used by the groups below
+        -- Transparent mode clears the vscBack color used by the groups below
         ColorColumn = { bg = "#181818" },
         CursorColumn = { link = "ColorColumn" },
         CursorLine = { link = "ColorColumn" },
