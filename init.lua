@@ -84,9 +84,6 @@ vim.api.nvim_set_keymap("n", "<ScrollWheelDown>", "<C-E>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<C-a>", "<Esc>ggVG<CR>", { noremap = true })
 vim.api.nvim_set_keymap("i", "<C-a>", "<Esc>ggVG<CR>", { noremap = true })
 
--- Ctrl+b: open NerdTree
-vim.api.nvim_set_keymap("n", "<C-b>", ":NERDTreeToggle<CR>", { noremap = true })
-
 --#############################################################################
 --##### Plugins configuration
 --#############################################################################
@@ -164,6 +161,85 @@ lazy_specs.gitsigns = {
     },
 }
 
+-------------------------------------------------------------------------------
+--- nvim-tree.lua
+-------------------------------------------------------------------------------
+
+-- Disable vim's builtin file explorer to avoid conflicts
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- Main Shortcuts:
+-- <leader><C-e> - toggle tree with current file selected
+-- a - create a file or directory
+-- d - remove a file or directory
+-- r - rename a file or directory
+-- <CR> - expand dir / open file
+-- W - collapse
+-- E - expand recursively
+-- <C-v> - split
+-- <C-x> - vsplit
+
+lazy_specs.nvim_tree = {
+    "nvim-tree/nvim-tree.lua",
+    lazy = true,
+    event = "VeryLazy",
+    keys = {
+        { "<C-b>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree sidebar" },
+    },
+    opts = {
+        sort_by = "case_sensitive",
+        view = {
+            width = 40,
+        },
+        filters = {
+            dotfiles = false
+        },
+        renderer = {
+            add_trailing = true,
+            highlight_git = true,
+            highlight_opened_files = "name",
+            highlight_modified = "name",
+            indent_markers = {
+                enable = true,
+                icons = {
+                    corner = "│",
+                    edge = "│",
+                    item = "│",
+                    bottom = "│",
+                    none = " ",
+                },
+            },
+            icons = {
+                git_placement = "signcolumn",
+                glyphs = {
+                    folder = {
+                        arrow_closed = "",
+                        arrow_open = "",
+                    },
+                },
+            },
+        },
+        git = {
+            enable = true,
+            ignore = false
+        }
+    },
+    dependencies = "nvim-tree/nvim-web-devicons",
+}
+
+-------------------------------------------------------------------------------
+--- dired.nvim
+-------------------------------------------------------------------------------
+
+lazy_specs.dired = {
+    "X3eRo0/dired.nvim",
+    keys = {
+        { "<M-b>", "<cmd>Dired<cr>", desc = "Open Dired interface" },
+    },
+    opts = {},
+    dependencies = "MunifTanjim/nui.nvim",
+}
 
 --#############################################################################
 --##### Autocommands
@@ -185,12 +261,13 @@ require("lazy").setup({
     spec = {
         "juliencombattelli/vscode.nvim",
         "edkolev/tmuxline.vim",
-        "scrooloose/nerdtree",
         "rubberduck203/aosp-vim",
-        lazy_specs.gitsigns,
         lazy_specs.telescope,
         lazy_specs.indent_blankline,
         lazy_specs.lualine,
+        lazy_specs.gitsigns,
+        lazy_specs.nvim_tree,
+        lazy_specs.dired,
     },
 })
 
