@@ -275,17 +275,28 @@ require("lazy").setup({
 --##### Color scheme
 --#############################################################################
 
-require("vscode").setup({
-    transparent = true,
+-- TODO ability to switch transparency at runtime with a :ToggleTransparency user command
+vim.g.transparency = true
+
+vscode_theme_config = {
     underline_links = true,
-    group_overrides = {
-        -- Transparent mode clears the vscBack color used by the groups below
-        ColorColumn = { bg = "#181818" },
-        CursorColumn = { link = "ColorColumn" },
-        CursorLine = { link = "ColorColumn" },
-        EndOfBuffer = { link = "LineNr" },
-    },
-})
+    transparent = false,
+}
+
+if vim.g.transparency then
+    vscode_theme_config = vim.tbl_extend("force", vscode_theme_config, {
+        transparent = true,
+        group_overrides = {
+            -- Transparent mode clears the vscBack color used by the groups below
+            ColorColumn = { bg = "#181818" },
+            CursorColumn = { link = "ColorColumn" },
+            CursorLine = { link = "ColorColumn" },
+            EndOfBuffer = { link = "LineNr" },
+        },
+    })
+end
+
+require("vscode").setup(vscode_theme_config)
 
 vim.cmd.colorscheme("vscode")
 
