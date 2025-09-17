@@ -141,6 +141,30 @@ lazy_specs.lualine = {
     },
 }
 
+-------------------------------------------------------------------------------
+--- GitSigns
+-------------------------------------------------------------------------------
+
+lazy_specs.gitsigns = {
+    "lewis6991/gitsigns.nvim",
+    lazy = true,
+    event = "VeryLazy",
+    opts = {
+        signcolumn = true,
+        numhl      = false,
+        linehl     = false,
+        word_diff  = false,
+        current_line_blame = true,
+        current_line_blame_opts = {
+            virt_text = true,
+            virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+            delay = 100,
+            ignore_whitespace = false,
+        },
+    },
+}
+
+
 --#############################################################################
 --##### Autocommands
 --#############################################################################
@@ -162,8 +186,8 @@ require("lazy").setup({
         "juliencombattelli/vscode.nvim",
         "edkolev/tmuxline.vim",
         "scrooloose/nerdtree",
-        "airblade/vim-gitgutter", -- TODO use gitsigns?
         "rubberduck203/aosp-vim",
+        lazy_specs.gitsigns,
         lazy_specs.telescope,
         lazy_specs.indent_blankline,
         lazy_specs.lualine,
@@ -187,4 +211,12 @@ require("vscode").setup({
 })
 
 vim.cmd.colorscheme("vscode")
+
+-- Increase the GitSigns groups contrast
+vim.api.nvim_set_hl(0, 'GitSignsAdd', { fg = 'Green', bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'GitSignsChange', { fg = 'Yellow', bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'GitSignsDelete', { fg = 'Red', bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'GitSignsAddLn', { fg = 'NONE', bg = 'Green' })
+vim.api.nvim_set_hl(0, 'GitSignsChangeLn', { fg = 'NONE', bg = 'Yellow' })
+vim.api.nvim_set_hl(0, 'GitSignsDeleteLn', { fg = 'NONE', bg = 'Red' })
 
