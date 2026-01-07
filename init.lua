@@ -241,6 +241,15 @@ lazy_specs.dired = {
     dependencies = "MunifTanjim/nui.nvim",
 }
 
+-------------------------------------------------------------------------------
+--- dired.nvim
+-------------------------------------------------------------------------------
+
+lazy_specs.smear_cursor = {
+    "sphamba/smear-cursor.nvim",
+    opts = {},
+}
+
 --#############################################################################
 --##### Autocommands
 --#############################################################################
@@ -268,6 +277,7 @@ require("lazy").setup({
         lazy_specs.gitsigns,
         lazy_specs.nvim_tree,
         lazy_specs.dired,
+        lazy_specs.smear_cursor,
     },
 })
 
