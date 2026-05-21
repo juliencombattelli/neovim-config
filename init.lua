@@ -162,6 +162,15 @@ lazy_specs.gitsigns = {
 }
 
 -------------------------------------------------------------------------------
+--- git-conflicts
+-------------------------------------------------------------------------------
+
+lazy_specs.git_conflicts = {
+    'akinsho/git-conflict.nvim',
+    config = true,
+}
+
+-------------------------------------------------------------------------------
 --- nvim-tree.lua
 -------------------------------------------------------------------------------
 
@@ -275,6 +284,7 @@ require("lazy").setup({
         lazy_specs.indent_blankline,
         lazy_specs.lualine,
         lazy_specs.gitsigns,
+        lazy_specs.git_conflicts,
         lazy_specs.nvim_tree,
         lazy_specs.dired,
         lazy_specs.smear_cursor,
