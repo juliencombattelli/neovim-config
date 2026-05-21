@@ -259,6 +259,19 @@ lazy_specs.smear_cursor = {
     opts = {},
 }
 
+-------------------------------------------------------------------------------
+--- comment.nvim
+-------------------------------------------------------------------------------
+
+lazy_specs.comment = {
+    "numToStr/Comment.nvim",
+    opts = {},
+}
+
+-- Ctrl+:: toggle line comment
+vim.api.nvim_set_keymap("n", "<C-;>", "gcc", { noremap = true })
+
+
 --#############################################################################
 --##### Autocommands
 --#############################################################################
@@ -288,6 +301,7 @@ require("lazy").setup({
         lazy_specs.nvim_tree,
         lazy_specs.dired,
         lazy_specs.smear_cursor,
+        lazy_specs.comment,
     },
 })
 
