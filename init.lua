@@ -85,6 +85,55 @@ vim.api.nvim_set_keymap("n", "<C-a>", "<Esc>ggVG<CR>", { noremap = true })
 vim.api.nvim_set_keymap("i", "<C-a>", "<Esc>ggVG<CR>", { noremap = true })
 
 --#############################################################################
+--##### Custom copy mode
+--#############################################################################
+
+-- Global variable to track the toggle state
+_G.copy_mode_active = false
+-- Table to store original settings before entering copy mode
+local original_settings = {}
+
+local function toggle_copy_mode()
+  if not _G.copy_mode_active then
+    -- 1. Save current state
+    original_settings.mouse = vim.opt.mouse:get()
+    original_settings.number = vim.opt.number:get()
+    original_settings.relativenumber = vim.opt.relativenumber:get()
+    original_settings.signcolumn = vim.opt.signcolumn:get()
+    original_settings.foldcolumn = vim.opt.foldcolumn:get()
+    original_settings.list = vim.opt.list:get()
+    original_settings.ibl_state = require("ibl.config").get_config(0).enabled
+
+    -- 2. Apply strict "Copy Mode" settings
+    vim.opt.mouse = ""              -- Let the local terminal handle mouse selection
+    vim.opt.number = false          -- Hide absolute numbers
+    vim.opt.relativenumber = false  -- Hide relative numbers
+    vim.opt.signcolumn = "no"       -- Remove sign column
+    vim.opt.foldcolumn = "0"        -- Remove fold column
+    vim.opt.list = false            -- Hide whitespace listchars
+    require("ibl").setup_buffer(0, { enabled = false}) -- Hide indent lines
+
+    _G.copy_mode_active = true
+    print("📋 Copy Mode: ENABLED (Terminal mouse selection active)")
+  else
+    -- 3. Restore original settings
+    vim.opt.mouse = original_settings.mouse
+    vim.opt.number = original_settings.number
+    vim.opt.relativenumber = original_settings.relativenumber
+    vim.opt.signcolumn = original_settings.signcolumn
+    vim.opt.foldcolumn = original_settings.foldcolumn
+    vim.opt.list = original_settings.list
+    require("ibl").setup_buffer(0, { enabled = original_settings.ibl_state})
+
+    _G.copy_mode_active = false
+    print("🛠️ Copy Mode: DISABLED (Default settings restored)")
+  end
+end
+
+-- Map the function to <F3> in Normal, Visual, and Insert modes
+vim.keymap.set({'n', 'v', 'i'}, '<F3>', toggle_copy_mode, { desc = "Toggle Copy Mode for SSH" })
+
+--#############################################################################
 --##### Plugins configuration
 --#############################################################################
 
