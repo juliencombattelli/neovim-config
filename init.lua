@@ -392,3 +392,16 @@ vim.api.nvim_set_hl(0, 'GitSignsAddLn', { fg = 'NONE', bg = 'Green' })
 vim.api.nvim_set_hl(0, 'GitSignsChangeLn', { fg = 'NONE', bg = 'Yellow' })
 vim.api.nvim_set_hl(0, 'GitSignsDeleteLn', { fg = 'NONE', bg = 'Red' })
 
+-- Align some C tokens color with VSCode
+vim.api.nvim_set_hl(0, "cTypedef", { link = "Type" })
+vim.api.nvim_set_hl(0, "cStructure", { link = "Type" })
+
+--#############################################################################
+--##### Language servers
+--#############################################################################
+
+-- Configuration is stored in lsp/ directory
+vim.lsp.enable({
+    -- C and C++
+    "clangd",
+})
