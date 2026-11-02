@@ -77,12 +77,12 @@ vim.g.vim_json_syntax_conceal = 0 -- quote concealing make editing json files in
 vim.opt.scrolloff = 8
 vim.opt.mouse = "a"
 -- Scroll one line at a time for a smoother experience
-vim.api.nvim_set_keymap("n", "<ScrollWheelUp>", "<C-Y>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<ScrollWheelDown>", "<C-E>", { noremap = true })
+vim.keymap.set("n", "<ScrollWheelUp>", "<C-Y>")
+vim.keymap.set("n", "<ScrollWheelDown>", "<C-E>")
 
--- Ctrl+a: select all buffer
-vim.api.nvim_set_keymap("n", "<C-a>", "<Esc>ggVG<CR>", { noremap = true })
-vim.api.nvim_set_keymap("i", "<C-a>", "<Esc>ggVG<CR>", { noremap = true })
+-- Ctrl+a to select all buffer
+vim.keymap.set("n", "<C-a>", "<Esc>ggVG<CR>")
+vim.keymap.set("i", "<C-a>", "<Esc>ggVG<CR>")
 
 --#############################################################################
 --##### Custom copy mode
@@ -317,8 +317,9 @@ lazy_specs.comment = {
     opts = {},
 }
 
--- Ctrl+:: toggle line comment
-vim.api.nvim_set_keymap("n", "<C-;>", "gcc", { noremap = true })
+-- Ctrl+: to toggle line comment
+vim.keymap.set("n", "<C-:>", "gcc", { remap = true })
+vim.keymap.set("v", "<C-:>", "gc", { remap = true })
 
 
 --#############################################################################
