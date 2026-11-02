@@ -321,6 +321,65 @@ lazy_specs.comment = {
 vim.keymap.set("n", "<C-:>", "gcc", { remap = true })
 vim.keymap.set("v", "<C-:>", "gc", { remap = true })
 
+-------------------------------------------------------------------------------
+--- multicursor.nvim
+-------------------------------------------------------------------------------
+
+lazy_specs.multicursor = {
+    "jake-stewart/multicursor.nvim",
+    branch = "1.0",
+    config = function()
+        local mc = require("multicursor-nvim")
+        mc.setup()
+
+        -- Add or skip cursor above/below the main cursor.
+        vim.keymap.set({"n", "x"}, "<C-S-up>", function() mc.lineAddCursor(-1) end)
+        vim.keymap.set({"n", "x"}, "<C-S-down>", function() mc.lineAddCursor(1) end)
+
+        -- Add or skip adding a new cursor by matching word/selection
+        vim.keymap.set({"n", "x"}, "<leader>n", function() mc.matchAddCursor(1) end)
+        vim.keymap.set({"n", "x"}, "<leader>s", function() mc.matchSkipCursor(1) end)
+        vim.keymap.set({"n", "x"}, "<leader>N", function() mc.matchAddCursor(-1) end)
+        vim.keymap.set({"n", "x"}, "<leader>S", function() mc.matchSkipCursor(-1) end)
+
+        -- Add and remove cursors with control + left click.
+        vim.keymap.set("n", "<A-leftmouse>", mc.handleMouse)
+        vim.keymap.set("n", "<A-leftdrag>", mc.handleMouseDrag)
+        vim.keymap.set("n", "<A-leftrelease>", mc.handleMouseRelease)
+
+        -- Disable and enable cursors.
+        vim.keymap.set({"n", "x"}, "<C-q>", mc.toggleCursor)
+
+        -- Mappings defined in a keymap layer only apply when there are
+        -- multiple cursors. This lets you have overlapping mappings.
+        mc.addKeymapLayer(function(layerSet)
+            -- Select a different cursor as the main one.
+            -- layerSet({"n", "x"}, "<left>", mc.prevCursor)
+            -- layerSet({"n", "x"}, "<right>", mc.nextCursor)
+
+            -- Delete the main cursor.
+            layerSet({"n", "x"}, "<leader>x", mc.deleteCursor)
+
+            -- Enable and clear cursors using escape.
+            layerSet("n", "<esc>", function()
+                if not mc.cursorsEnabled() then
+                    mc.enableCursors()
+                else
+                    mc.clearCursors()
+                end
+            end)
+        end)
+
+        -- Customize how cursors look.
+        -- vim.api.nvim_set_hl(0, "MultiCursorCursor", { reverse = true })
+        -- vim.api.nvim_set_hl(0, "MultiCursorVisual", { link = "Visual" })
+        -- vim.api.nvim_set_hl(0, "MultiCursorSign", { link = "SignColumn"})
+        -- vim.api.nvim_set_hl(0, "MultiCursorMatchPreview", { link = "Search" })
+        -- vim.api.nvim_set_hl(0, "MultiCursorDisabledCursor", { reverse = true })
+        -- vim.api.nvim_set_hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
+        -- vim.api.nvim_set_hl(0, "MultiCursorDisabledSign", { link = "SignColumn"})
+    end
+}
 
 --#############################################################################
 --##### Autocommands
@@ -352,6 +411,7 @@ require("lazy").setup({
         lazy_specs.dired,
         lazy_specs.smear_cursor,
         lazy_specs.comment,
+        lazy_specs.multicursor,
     },
 })
 
